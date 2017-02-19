@@ -35,6 +35,9 @@ cp -p redsocks %{buildroot}%{_bindir}/
 
 %changelog
 * Sun Feb 19 2017 avl <avlubimov@gmail.com> 0.5-1
+- init rpm package
+
+* Sun Feb 19 2017 avl <avlubimov@gmail.com> 0.5-1
 - init rpm package 
 
 
