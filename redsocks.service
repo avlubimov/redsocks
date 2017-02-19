@@ -3,13 +3,15 @@ Description=Transparent redirector of any TCP connection to proxy using your fir
 
 [Service]
 Type=forking
-PIDFile=/run/redsocks/redsocks.pid
-EnvironmentFile=/etc/conf.d/redsocks
+
+Environment=PIDFILE=/run/redsocks/redsocks.pid
+Environment=CONFFILE=/etc/redsocks/redsocks.conf
+
+PIDFile=$PIDFILE
 User=redsocks
-ExecStartPre=/usr/bin/redsocks -t -c $REDSOCKS_CONF
-ExecStart=/usr/bin/redsocks -c $REDSOCKS_CONF \
-  -p /run/redsocks/redsocks.pid
-ExecStopPost=/bin/rm /run/redsocks/redsocks.pid
+ExecStartPre=/usr/bin/redsocks -t -c $CONFFILE
+ExecStart=/usr/bin/redsocks -c $CONFFILE -p $PIDFILE
+ExecStopPost=/bin/rm $PIDFILE
 Restart=on-abort
 
 [Install]

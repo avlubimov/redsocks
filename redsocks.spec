@@ -1,6 +1,6 @@
 Name:	    redsocks
 Version:	0.5
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Transparent redirector of any TCP connection to a SOCKS or HTTPS proxy
 
 Group:		Applications/System
@@ -10,6 +10,9 @@ Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:	libevent-devel >= 2.0.0
 Requires:	libevent >= 2.0.0
+Requires(pre):     /usr/sbin/useradd, /usr/bin/getent
+Requires(postun):  /usr/sbin/userdel
+
 
 %description
 This tool allows you to redirect any TCP connection to SOCKS or HTTPS
@@ -22,15 +25,26 @@ proxy using your firewall, so redirection is system-wide.
 %build
 make %{?_smp_mflags}
 
-
 %install
-mkdir -p %{buildroot}%{_bindir}/
-cp -p redsocks %{buildroot}%{_bindir}/
+install -D %name                 %{buildroot}%{_bindir}/
+install -D %{name}.service       %{buildroot}/usr/lib/systemd/system
+install -D %{name}.conf.example  %{buildroot}%{_sysconfdir}/%{name}
 
 
 %files
-%doc README README.html redsocks.conf.example redsocks.service doc/*
+%doc README README.html doc/*
 %{_bindir}/redsocks
+%{_sysconfdir}/%{name}
+/usr/lib/systemd/system/*
+
+%pre
+echo create system user account %{name} and system group %{name}
+/usr/bin/getent group %{name} > /dev/null  || /usr/sbin/groupadd -r %{name}
+/usr/bin/getent passwd %{name} > /dev/null || /usr/sbin/useradd -r -d /etc/%{name} -s /sbin/nologin -g %{name} %{name}
+
+%postun
+echo remove system user account %{name} and system group %{name}
+/usr/sbin/userdel %{name}
 
 
 
