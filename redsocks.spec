@@ -1,6 +1,6 @@
 Name:	    redsocks
 Version:	0.5
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Transparent redirector of any TCP connection to a SOCKS or HTTPS proxy
 
 Group:		Applications/System
@@ -29,7 +29,7 @@ cp -p redsocks %{buildroot}%{_bindir}/
 
 
 %files
-%doc README README.html redsocks.conf.example redsocks.service
+%doc README README.html redsocks.conf.example redsocks.service doc/*
 %{_bindir}/redsocks
 
 
