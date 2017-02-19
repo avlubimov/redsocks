@@ -16,7 +16,7 @@ This tool allows you to redirect any TCP connection to SOCKS or HTTPS
 proxy using your firewall, so redirection is system-wide.
 
 %prep
-%autosetup -n %{name}-release-%{version}
+%autosetup -n %{name}-%{version}
 
 
 %build
@@ -29,6 +29,7 @@ cp -p redsocks %{buildroot}%{_bindir}/
 
 
 %files
+%doc README README.html redsocks.conf.example redsocks.service
 %{_bindir}/redsocks
 
 
@@ -37,8 +38,6 @@ cp -p redsocks %{buildroot}%{_bindir}/
 * Sun Feb 19 2017 avl <avlubimov@gmail.com> 0.5-1
 - init rpm package
 
-* Sun Feb 19 2017 avl <avlubimov@gmail.com> 0.5-1
-- init rpm package 
 
 
 
