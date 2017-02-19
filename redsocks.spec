@@ -49,6 +49,9 @@ echo remove system user account %{name} and system group %{name}
 
 
 %changelog
+* Sun Feb 19 2017 avl <avlubimov@gmail.com> 0.5-5
+- minor spec changes (avlubimov@gmail.com)
+
 * Sun Feb 19 2017 avl <avlubimov@gmail.com> 0.5-4
 - fix service file, spec file, place config and systemd unit.
   (avlubimov@gmail.com)
