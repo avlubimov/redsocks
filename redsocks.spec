@@ -35,6 +35,9 @@ cp -p redsocks %{buildroot}%{_bindir}/
 
 
 %changelog
+* Sun Feb 19 2017 avl <avlubimov@gmail.com> 0.5-3
+- add extra docs (avlubimov@gmail.com)
+
 * Sun Feb 19 2017 avl <avlubimov@gmail.com> 0.5-2
 - fix rpm spec (avlubimov@gmail.com)
 
