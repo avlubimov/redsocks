@@ -49,6 +49,10 @@ echo remove system user account %{name} and system group %{name}
 
 
 %changelog
+* Sun Feb 19 2017 avl <avlubimov@gmail.com> 0.5-4
+- fix service file, spec file, place config and systemd unit.
+  (avlubimov@gmail.com)
+- auto create and remove system account redsocks 
 * Sun Feb 19 2017 avl <avlubimov@gmail.com> 0.5-3
 - add extra docs (avlubimov@gmail.com)
 
