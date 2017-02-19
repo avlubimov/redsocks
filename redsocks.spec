@@ -1,6 +1,6 @@
 Name:	    redsocks
 Version:	0.5
-Release:	4%{?dist}
+Release:	5%{?dist}
 Summary:	Transparent redirector of any TCP connection to a SOCKS or HTTPS proxy
 
 Group:		Applications/System
@@ -26,15 +26,15 @@ proxy using your firewall, so redirection is system-wide.
 make %{?_smp_mflags}
 
 %install
-install -D %name                 %{buildroot}%{_bindir}/
-install -D %{name}.service       %{buildroot}/usr/lib/systemd/system
-install -D %{name}.conf.example  %{buildroot}%{_sysconfdir}/%{name}
+install -D %{name}                 %{buildroot}%{_bindir}/%{name}
+install -D %{name}.service       %{buildroot}/usr/lib/systemd/system/%{name}.service
+install -D %{name}.conf.example  %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
 
 
 %files
 %doc README README.html doc/*
-%{_bindir}/redsocks
-%{_sysconfdir}/%{name}
+%{_bindir}/*
+%{_sysconfdir}/*
 /usr/lib/systemd/system/*
 
 %pre
